@@ -68,10 +68,31 @@ cd freqAI-LSTM
 docker build -f torch/Dockerfile  -t freqai .
 ```
 3. Download data and Run the backtest
-```
-docker run -v ./data:/freqtrade/user_data/data  -it freqai  download-data -c user_data/config-torch.json --timerange 20230101-20240529 --timeframe 15m 30m 1h 2h 4h 8h 1d --erase
 
+***Note about downloading the right time frame for backtesting***: 
+As an example, to backtest the --timerange 20230101-20240529 using the example config which sets train_period_days to 120, together with startup_candle_count: 20 (found in the strategy file) on a maximum include_timeframes of 8h, the start date for the downloaded data needs to be 120 days - 20 * 8h / 24 hours = 114 days earlier than the start of the desired training time range. So we would use timerange --timerange 20220901-20240529
+
+Download the data:
+```
+docker run -v ./data:/freqtrade/user_data/data  -it freqai  download-data -c user_data/config-torch.json --timerange 20220901-20240529 --timeframe 15m 30m 1h 2h 4h 8h 1d --erase
+```
+
+Backtest:
+
+```
 docker run -v ./data:/freqtrade/user_data/data  -it freqai  backtesting -c user_data/config-torch.json --breakdown day week month --timerange 20240301-20240401 
+```
+
+Backtest With gpu:
+
+```
+sudo docker run --gpus all -v ./data:/freqtrade/user_data/data  -it freqai  backtesting -c user_data/config-torch.json --breakdown day week month --timerange 20240301-20240401
+```
+
+Backtest With different config:
+
+```
+sudo docker run --gpus all -v ./data:/freqtrade/user_data/data  -v {path to custom config on local}:/freqtrade/user_data/custom_config.json -it freqai  backtesting -c user_data/custom_config.json --breakdown day week month --timerange 20240301-20240401
 ```
 
 
