@@ -80,7 +80,7 @@
     "purge_old_models": 2,
     "save_backtest_models": true,
     "write_metrics_to_disk": true,
-    "activate_tensorboard": true,
+    "activate_tensorboard": false,
     "feature_parameters": {
       "include_corr_pairlist": [
         "BTC/USDT:USDT",
@@ -107,11 +107,11 @@
       "shuffle": false
     },
     "model_training_parameters": {
-      "learning_rate": 3e-3,
+      "learning_rate": 3e-5,
       "trainer_kwargs": {
         "n_steps": null,
-        "batch_size": 32,
-        "n_epochs": 10
+        "batch_size": 512,
+        "n_epochs": 1000
       },
       "model_kwargs": {
         "num_lstm_layers": 3,
