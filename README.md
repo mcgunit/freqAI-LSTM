@@ -74,25 +74,25 @@ As an example, to backtest the --timerange 20230301-20240601 using the example c
 
 Download the data:
 ```
-docker run -v ./data:/freqtrade/user_data/data  -it freqai  download-data -c user_data/config-torch.json --timerange 20220901-20240601 --timeframe 15m 30m 1h 2h 4h 8h 1d --erase
+docker run -v {absolute location to}/freqAI-LSTM/data:/freqtrade/user_data/data  -it freqai  download-data -c user_data/config-torch.json --timerange 20220901-20240601 --timeframe 15m 30m 1h 2h 4h 8h 1d --erase
 ```
 
 Backtest:
 
 ```
-docker run -v ./data:/freqtrade/user_data/data  -it freqai  backtesting -c user_data/config-torch.json --breakdown day week month --timerange 20230301-20240601 
+docker run -v -d --name freqai {absolute location to}/freqAI-LSTM/data:/freqtrade/user_data/data  -it freqai  backtesting -c user_data/config-torch.json --breakdown day week month --timerange 20230301-20240601 
 ```
 
 Backtest With gpu:
 
 ```
-sudo docker run --gpus all -v ./data:/freqtrade/user_data/data  -it freqai  backtesting -c user_data/config-torch.json --breakdown day week month --timerange 20230301-20240601
+sudo docker run --gpus all -d --name freqai -v {absolute location to}/freqAI-LSTM/data:/freqtrade/user_data/data  -it freqai  backtesting -c user_data/config-torch.json --breakdown day week month --timerange 20230301-20240601
 ```
 
 Backtest With different config:
 
 ```
-sudo docker run --gpus all -v ./data:/freqtrade/user_data/data -v ./user_data:/freqtrade/user_data/ -v ./config.json:/freqtrade/user_data/custom_config.json -it freqai  backtesting -c user_data/custom_config.json --breakdown day week month --timerange 20230301-20240601
+sudo docker run --gpus all -d --name freqai -v {absolute location to}/freqAI-LSTM/data:/freqtrade/user_data/data -v {absolute location to}/freqAI-LSTM/user_data:/freqtrade/user_data/ -v {absolute location to}/freqAI-LSTM/config.json:/freqtrade/user_data/custom_config.json -it freqai  backtesting -c user_data/custom_config.json --breakdown day week month --timerange 20230301-20240601
 ```
 
 4. Start trade

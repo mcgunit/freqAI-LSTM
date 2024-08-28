@@ -111,7 +111,7 @@
       "trainer_kwargs": {
         "n_steps": null,
         "batch_size": 512,
-        "n_epochs": 1000
+        "n_epochs": 100
       },
       "model_kwargs": {
         "num_lstm_layers": 3,
