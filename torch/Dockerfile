@@ -17,6 +17,8 @@ RUN mkdir -p /freqtrade/user_data/strategies /freqtrade/user_data/freqaimodels \
   && cp torch/PyTorchModelTrainer.py /freqtrade/freqtrade/freqai/torch/ \
   && cp torch/PyTorchLSTMRegressor.py /freqtrade/user_data/freqaimodels/
 
+EXPOSE 8080
+
 WORKDIR /freqtrade
 RUN sed -i "s/5m/1h/" freqtrade/configuration/config_validation.py
 USER ftuser
