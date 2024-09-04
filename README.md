@@ -100,7 +100,7 @@ sudo docker run --gpus all -d --name freqai -v {absolute location to}/freqAI-LST
 Freqai will trade live or simulate depending of the value being true or false din the config file
 
 ```
-sudo docker run --gpus all -v ./data:/freqtrade/user_data/data -v ./user_data:/freqtrade/user_data/ -v ./config.json:/freqtrade/user_data/custom_config.json -it freqai  trade -c user_data/custom_config.json --db-url sqlite:///freqtrade/user_data/tradesv3.dry_run.sqlite
+sudo docker run --name freqai -d --gpus all -p 8080:8080 -v {absolute location to}/freqAI-LSTM/data:/freqtrade/user_data/data -v {absolute location to}/freqAI-LSTM/user_data:/freqtrade/user_data/ -v {absolute location to}/freqAI-LSTM/config.json:/freqtrade/user_data/custom_config.json -it freqai  trade -c user_data/custom_config.json --db-url sqlite:///freqtrade/user_data/tradesv3.dry_run.sqlite
 ```
 
 ## Model Architecture

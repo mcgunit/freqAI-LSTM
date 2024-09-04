@@ -111,7 +111,7 @@
       "trainer_kwargs": {
         "n_steps": null,
         "batch_size": 512,
-        "n_epochs": 100
+        "n_epochs": 1000
       },
       "model_kwargs": {
         "num_lstm_layers": 3,
@@ -123,7 +123,7 @@
   },
   "api_server": {
     "enabled": true,
-    "listen_ip_address": "127.0.0.1",
+    "listen_ip_address": "0.0.0.0",
     "listen_port": 8080,
     "verbosity": "error",
     "jwt_secret_key": "SuperSomethingRandom",
