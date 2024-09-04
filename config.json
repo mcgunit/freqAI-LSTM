@@ -122,13 +122,13 @@
     }
   },
   "api_server": {
-    "enabled": false,
+    "enabled": true,
     "listen_ip_address": "127.0.0.1",
     "listen_port": 8080,
     "verbosity": "error",
-    "jwt_secret_key": "somethingrandom",
+    "jwt_secret_key": "SuperSomethingRandom",
     "CORS_origins": [],
-    "username": "freqtrader",
-    "password": "SuperSecurePassword"
+    "username": "root",
+    "password": "admin"
   }
 }
